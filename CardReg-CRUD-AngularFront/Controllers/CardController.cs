@@ -53,19 +53,17 @@ namespace CardReg_CRUD_AngularFront.Controllers
 
         [HttpDelete]
         [Route("{id:Guid}")]
-        public async Task<IActionResult> DeleteCard([FromBody] Guid id)
+        public async Task<IActionResult> DeleteCard(Guid id)
         {
-            var cardToDelete = await  _context.Cards.FirstOrDefaultAsync(c => c.Id == id);
+            var cardToDelete = await _context.Cards.FirstOrDefaultAsync(c => c.Id == id);
             if (cardToDelete != null)
             {
                 _context.Cards.Remove(cardToDelete);
                 await _context.SaveChangesAsync();
                 return Ok(cardToDelete);
-
             }
 
-            return NotFound("card not found");
-
+            return NotFound("Card not found");
         }
 
         [HttpPut]

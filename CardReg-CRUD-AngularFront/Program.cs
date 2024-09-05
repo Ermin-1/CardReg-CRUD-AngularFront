@@ -29,6 +29,7 @@ namespace CardReg_CRUD_AngularFront
             }
 
             app.UseHttpsRedirection();
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseAuthorization();
 
